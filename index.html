@@ -4,39 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fruity Rogue</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        /* General body styling */
         body {
-            font-family: Arial, sans-serif;
+            font-family: "Roboto", serif;
+            font-weight: 400;
+            font-style: normal;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            background-color: #121212; /* Dark background for night mode */
+            color: #e0e0e0; /* Light gray text for readability */
+            background-image: url('assets/repeating_pattern.png'); /* Repeating pattern */
+            background-repeat: repeat; /* Ensures the pattern repeats */
+            background-size: 150px 150px; /* Scale the pattern */
         }
+
+        /* Center content and set maximum width */
         .container {
             max-width: 900px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
         }
+
+        /* Separator styling */
         .separator {
             height: 2px;
-            background-color: #ddd;
-            margin: 40px 0;
+            background-color: #333; /* Light gray to separate sections visually */
+            margin: 40px 0; /* Space around separators */
         }
-        .artwork img, .screenshot-carousel img {
-            max-width: 100%;
-            height: auto;
+
+        /* Styling for artwork */
+        .artwork img {
+            max-width: 100%; /* Ensure images are responsive */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Rounded corners for a polished look */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
         }
-        iframe {
-            width: 100%;
-            max-width: 560px;
-            height: 315px;
+
+        /* Styling for embedded iframe content */
+        #steam {
+            width: 100%; /* Responsive width */
+            max-width: 900px; /* Limit maximum width */
+            height: 190px; /* Standard video aspect ratio */
+            border: none; /* Remove default iframe border */
         }
+
+
+        /* Styling for embedded iframe content */
+        #youtube {
+            width: 100%; /* Responsive width */
+            max-width: 560px; /* Limit maximum width */
+            height: 315px; /* Standard video aspect ratio */
+            border: none; /* Remove default iframe border */
+        }
+
+        /* Key features section styling */
         .key-features {
-            text-align: left;
+            text-align: left; /* Align text to the left for readability */
+            line-height: 1.6; /* Increase line spacing for better readability */
         }
+
+        /* Contact information styling */
         .contact {
-            font-size: 1.2em;
+            font-size: 1.2em; /* Slightly larger text for emphasis */
+            color: #bbb; /* Softer text color */
+        }
+
+        .contact a {
+            color: #80cbc4; /* Blue link color */
+            text-decoration: none; /* Remove underline from links */
+        }
+
+        .contact a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        /* Flickity carousel styling */
+        .screenshot-carousel {
+            margin: 20px auto;
+        }
+
+        .carousel-cell {
+            width: 100%; /* Full width of container */
+            margin-right: 10px;
+        }
+
+        .carousel-cell img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-weight: 500;
         }
     </style>
 </head>
@@ -50,47 +117,55 @@
 
         <!-- Steam Integration -->
         <div>
-            <iframe src="https://store.steampowered.com/widget/3221570/" frameborder="0" width="646" height="190"></iframe>
+            <iframe src="https://store.steampowered.com/widget/3221570/" frameborder="0" id="steam"></iframe>
         </div>
         <div class="separator"></div>
 
         <!-- Trailer -->
         <div>
-            <h2>Watch the Trailer</h2>
-            <iframe src="https://www.youtube.com/embed/your_trailer_id" frameborder="0" allowfullscreen></iframe>
+            <h2 class="title">Watch the Trailer</h2>
+            <iframe src="https://www.youtube.com/embed/ro0LWy5TsOQ?si=inI31rRfpEpBOSZ7" frameborder="0" allowfullscreen id="youtube"></iframe>
         </div>
         <div class="separator"></div>
 
-        <!-- Key Features -->
-        <div class="key-features">
-            <h2>Key Features</h2>
-            <ul>
-                <li>Fast-paced action roguelike gameplay.</li>
-                <li>Unique fruit-themed characters and weapons.</li>
-                <li>Procedurally generated levels for endless replayability.</li>
-                <li>Strong item synergies to discover.</li>
-                <li>Vibrant and quirky art style.</li>
-            </ul>
-        </div>
-        <div class="separator"></div>
+ 
 
-        <!-- Screenshot Carousel -->
-        <div class="screenshot-carousel">
-            <h2>Screenshots</h2>
-            <img src="assets/screenshot_1.jpg" alt="Screenshot 1">
-            <img src="assets/screenshot_2.png" alt="Screenshot 2">
-            <img src="assets/screenshot_3.jpg" alt="Screenshot 3">
-            <img src="assets/screenshot_4.png" alt="Screenshot 4">
-            <img src="assets/screenshot_5.jpg" alt="Screenshot 5">
-            <img src="assets/screenshot_6.png" alt="Screenshot 6">
-            <img src="assets/screenshot_7.jpg" alt="Screenshot 7">
+
+            <h2 class="title">Screenshots</h2>
+        <!-- Screenshot Carousel Section -->
+        <div class="screenshot-carousel" data-flickity='{ "wrapAround": true, "autoPlay": 5000 }'>
+
+            <div class="carousel-cell">
+                <img src="assets/screenshot_1.jpg" alt="Screenshot 1">
+            </div>
+            <div class="carousel-cell">
+                <img src="assets/screenshot_2.png" alt="Screenshot 2">
+            </div>
+            <div class="carousel-cell">
+                <img src="assets/screenshot_3.jpg" alt="Screenshot 3">
+            </div>
+            <div class="carousel-cell">
+                <img src="assets/screenshot_4.png" alt="Screenshot 4">
+            </div>
+            <div class="carousel-cell">
+                <img src="assets/screenshot_5.jpg" alt="Screenshot 5">
+            </div>
+            <div class="carousel-cell">
+                <img src="assets/screenshot_6.png" alt="Screenshot 6">
+            </div>
+            <div class="carousel-cell">
+                <img src="assets/screenshot_7.jpg" alt="Screenshot 7">
+            </div>
         </div>
         <div class="separator"></div>
 
         <!-- Contact -->
         <div class="contact">
-            <p>Have questions or feedback? Reach out at <a href="mailto:contact@fruityrogue.com">contact@fruityrogue.com</a></p>
+            <p>Have questions or feedback? Reach out at <a href="mailto:adam.harmane@mail.com">adam.harmane@mail.com</a></p>
         </div>
     </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
 </body>
 </html>
